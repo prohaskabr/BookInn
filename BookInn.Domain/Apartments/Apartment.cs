@@ -1,20 +1,18 @@
-﻿namespace BookInn.Domain.Apartments;
+﻿using BookInn.Domain.Abstractions;
 
-public sealed class Apartment
+namespace BookInn.Domain.Apartments;
+
+public sealed class Apartment : Entity
 {
-    public Guid Id { get; private set; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public string Country { get; private set; }
-    public string State { get; private set; }
-    public string ZipCode { get; private set; }
-    public string City { get; private set; }
-    public string Street { get; private set; }
-    public decimal PriceAmount { get; private set; }
-    public string PriceCurrency { get; private set; }
-    public decimal CleaningFeeAmount { get; private set; }
-    public string CleaningFeeCurrency { get; private set; }
+    public Name Name { get; private set; }
+    public Description Description { get; private set; }
+    public Address Address { get; private set; }
+    public Money Price { get; private set; }
+    public Money CleaningFee { get; private set; }
     public DateTime? LastBookedOnUtc { get; private set; }
     public List<Amenity> Amenities { get; set; } = new();
 
+    public Apartment(Guid id) : base(id)
+    {
+    }
 }
