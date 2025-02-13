@@ -2,17 +2,21 @@
 
 namespace BookInn.Domain.Apartments;
 
-public sealed class Apartment : Entity
+public sealed class Apartment(
+    Guid id,
+    Name name,
+    Description description,
+    Address address,
+    Money price,
+    Money cleaningFee,
+    DateTime? lastBookedOnUtc)
+    : Entity(id)
 {
-    public Name Name { get; private set; }
-    public Description Description { get; private set; }
-    public Address Address { get; private set; }
-    public Money Price { get; private set; }
-    public Money CleaningFee { get; private set; }
-    public DateTime? LastBookedOnUtc { get; private set; }
+    public Name Name { get; private set; } = name;
+    public Description Description { get; private set; } = description;
+    public Address Address { get; private set; } = address;
+    public Money Price { get; private set; } = price;
+    public Money CleaningFee { get; private set; } = cleaningFee;
+    public DateTime? LastBookedOnUtc { get; private set; } = lastBookedOnUtc;
     public List<Amenity> Amenities { get; set; } = new();
-
-    public Apartment(Guid id) : base(id)
-    {
-    }
 }
