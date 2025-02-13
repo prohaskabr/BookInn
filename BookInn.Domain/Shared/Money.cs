@@ -1,4 +1,6 @@
-namespace BookInn.Domain.Apartments;
+using BookInn.Domain.Apartments;
+
+namespace BookInn.Domain.Shared;
 
 public record Money(decimal Amount, Currency Currency)
 {
@@ -17,6 +19,10 @@ public record Money(decimal Amount, Currency Currency)
 
         return new Money(a.Amount - b.Amount, a.Currency);
     }
-    
-    public static Money Zero => new Money(0,Currency.None);
+
+    public static Money Zero() => new Money(0, Currency.None);
+
+    public static Money Zero(Currency currency) => new Money(0, currency);
+
+    public bool IsZero() => this != Zero(Currency);
 }

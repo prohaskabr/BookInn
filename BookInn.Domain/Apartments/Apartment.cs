@@ -1,4 +1,5 @@
 ﻿using BookInn.Domain.Abstractions;
+using BookInn.Domain.Shared;
 
 namespace BookInn.Domain.Apartments;
 
@@ -17,6 +18,6 @@ public sealed class Apartment(
     public Address Address { get; private set; } = address;
     public Money Price { get; private set; } = price;
     public Money CleaningFee { get; private set; } = cleaningFee;
-    public DateTime? LastBookedOnUtc { get; private set; } = lastBookedOnUtc;
+    public DateTime? LastBookedOnUtc { get; internal set; } = lastBookedOnUtc;
     public List<Amenity> Amenities { get; set; } = new();
 }

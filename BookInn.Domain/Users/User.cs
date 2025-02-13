@@ -1,4 +1,5 @@
 using BookInn.Domain.Abstractions;
+using BookInn.Domain.Users.Events;
 
 namespace BookInn.Domain.Users;
 
@@ -15,6 +16,12 @@ public sealed class User : Entity
         Email = email;
     }
 
-    public static User Create(FirstName firstName, LastName lastName, Email email) =>
-        new User(Guid.NewGuid(), firstName, lastName, email);
+    public static User Create(FirstName firstName, LastName lastName, Email email)
+    {
+        var user = new User(Guid.NewGuid(), firstName, lastName, email);
+
+        user.RaiseDomainEvent(new UserCreated(user.Id));
+
+        return user;
+    }
 }
