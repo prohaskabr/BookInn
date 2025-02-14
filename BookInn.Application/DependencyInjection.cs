@@ -1,4 +1,5 @@
 using BookInn.Application.Abstractions.Clock;
+using BookInn.Application.Abstractions.Email;
 using BookInn.Domain.Bookings;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,9 +11,12 @@ public static class DependencyInjection
     {
         services.AddMediatR(config => { config.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly); });
 
-        services.AddTransient<PricingService>();
-
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        
+        services.AddTransient<PricingService>();
+        
+        services.AddTransient<IEmailService, EmailService>();
+        
 
         return services;
     }

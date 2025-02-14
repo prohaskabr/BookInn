@@ -16,12 +16,6 @@ internal sealed class ReserveBookingCommandHandler(
     IDateTimeProvider clock)
     : ICommandHandler<ReserveBooking, Guid>
 {
-    private readonly IApartmentRepository apartmentRepository = apartmentRepository;
-    private readonly IBookingRepository bookingRepository = bookingRepository;
-    private readonly IUnitOfWork unitOfWork = unitOfWork;
-    private readonly PricingService pricingService = pricingService;
-    private readonly IDateTimeProvider clock = clock;
-
     public async Task<Result<Guid>> Handle(ReserveBooking request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetByIdAsync(request.UserId, cancellationToken);
