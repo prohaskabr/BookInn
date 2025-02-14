@@ -1,3 +1,4 @@
+using BookInn.Application.Abstractions.Clock;
 using BookInn.Domain.Bookings;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +11,10 @@ public static class DependencyInjection
         services.AddMediatR(config => { config.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly); });
 
         services.AddTransient<PricingService>();
-        
+
+        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
         return services;
     }
 }
+
