@@ -3,7 +3,7 @@ using BookInn.Application.Abstractions.Messaging;
 namespace BookInn.Application.Bookings.ReserveBooking;
 
 public record ReserveBooking(
-    Guid AppartmentId,
+    Guid ApartmentId,
     Guid UserId,
     DateOnly Start,
     DateOnly End
