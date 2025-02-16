@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookInn.Domain", "BookInn.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookInn.Application", "BookInn.Application\BookInn.Application.csproj", "{5B0D2684-C5C3-491A-ABA7-141316117B17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookInn.Infrastructure", "BookInn.Infrastructure\BookInn.Infrastructure.csproj", "{C4312639-005E-4084-8127-2FF6CE7FE62F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{5B0D2684-C5C3-491A-ABA7-141316117B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B0D2684-C5C3-491A-ABA7-141316117B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B0D2684-C5C3-491A-ABA7-141316117B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4312639-005E-4084-8127-2FF6CE7FE62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4312639-005E-4084-8127-2FF6CE7FE62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4312639-005E-4084-8127-2FF6CE7FE62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4312639-005E-4084-8127-2FF6CE7FE62F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D7E9560C-6BE8-4DCB-9F2A-5650DD45A7EA} = {85BAE5A9-A8CB-4B93-BB07-F021412F6A72}
 		{5B0D2684-C5C3-491A-ABA7-141316117B17} = {85BAE5A9-A8CB-4B93-BB07-F021412F6A72}
+		{C4312639-005E-4084-8127-2FF6CE7FE62F} = {85BAE5A9-A8CB-4B93-BB07-F021412F6A72}
 	EndGlobalSection
 EndGlobal
