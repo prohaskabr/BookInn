@@ -19,7 +19,7 @@ internal sealed class ReserveBookingCommandHandler(
     public async Task<Result<Guid>> Handle(ReserveBooking request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetByIdAsync(request.UserId, cancellationToken);
-        var apartment = await apartmentRepository.GetApartmentByIdAsync(request.ApartmentId, cancellationToken);
+        var apartment = await apartmentRepository.GetByIdAsync(request.ApartmentId, cancellationToken);
         var duration = DateRange.Create(request.Start, request.End);
 
         if (user is null)
