@@ -20,11 +20,11 @@ public static class DependencyInjection
 
         services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
-        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+       
 
         services.AddTransient<PricingService>();
 
-        services.AddTransient<IEmailService, EmailService>();
+        
 
 
         return services;
