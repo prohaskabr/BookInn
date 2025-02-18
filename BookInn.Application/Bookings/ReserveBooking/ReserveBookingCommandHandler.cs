@@ -1,5 +1,6 @@
 using BookInn.Application.Abstractions.Clock;
 using BookInn.Application.Abstractions.Messaging;
+using BookInn.Application.Exceptions;
 using BookInn.Domain.Abstractions;
 using BookInn.Domain.Apartments;
 using BookInn.Domain.Bookings;
@@ -31,12 +32,19 @@ internal sealed class ReserveBookingCommandHandler(
         if (await bookingRepository.IsOverlappingAsync(apartment, duration, cancellationToken))
             return Result.Failure<Guid>(BookingErrors.Overlap);
 
-        var booking = Booking.Reserve(apartment, user.Id, duration, clock.UtcNow, pricingService);
+        try
+        {
+            var booking = Booking.Reserve(apartment, user.Id, duration, clock.UtcNow, pricingService);
 
-        bookingRepository.Add(booking);
+            bookingRepository.Add(booking);
 
-        await unitOfWork.SaveChangesAsync(cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return booking.Id;
+            return booking.Id;
+        }
+        catch (ConcurrencyException e)
+        {
+            return Result.Failure<Guid>(BookingErrors.Overlap);
+        }
     }
 }
