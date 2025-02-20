@@ -18,6 +18,12 @@ public sealed class Review : Entity
 
     public DateTime CreatedOnUtc { get; private set; }
 
+
+    private Review()
+    {
+        
+    }
+
     private Review(
         Guid id,
         Guid apartmentId,

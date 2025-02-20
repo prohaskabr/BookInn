@@ -21,6 +21,11 @@ public sealed class Booking : Entity
     public DateTime? CancelledOnUtc { get; private set; }
     public DateTime? RejectedOnUtc { get; private set; }
 
+
+    private Booking()
+    {        
+    }
+    
     private Booking(Guid id, Guid apartmentId, Guid userId, DateRange duration, Money priceForPeriod, Money cleaningFee,
         Money amenitiesUpCharge, Money totalPrice, BookingStatus status, DateTime createdOnUtc) : base(id)
     {

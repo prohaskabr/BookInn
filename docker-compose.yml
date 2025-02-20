@@ -1,0 +1,21 @@
+services:
+  bookinn.api:
+    image: ${DOCKER_REGISTRY-}bookinnapi
+    container_name: BookingInn.Api
+    build:
+      context: .
+      dockerfile: BookInn.Api/Dockerfile
+    depends_on:
+      - bookinn-db
+
+  bookinn-db:
+    image: postgres:latest
+    container_name: BookingInn.Db
+    environment:
+      - POSTGRES_DB=bookinn
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data 
+    ports:
+      - 5432:5432
