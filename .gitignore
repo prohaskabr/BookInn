@@ -399,3 +399,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /.containers/database
+/.containers/identity/h2/keycloakdb.mv.db
+/.containers/identity/h2/keycloakdb.trace.db
