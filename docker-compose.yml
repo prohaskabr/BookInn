@@ -19,3 +19,33 @@ services:
       - ./.containers/database:/var/lib/postgresql/data 
     ports:
       - 5432:5432
+
+  bookinn-idp:
+    image: keycloak/keycloak:latest
+    container_name: Bookinn.Identity
+    command: start-dev --import-realm
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/bookinn-realm-export.json
+    volumes:
+      - ./.containers/identity:/opt/keycloak/standalone/data
+      - ./.files/bookinn-realm-export.json:/tmp/bookinn-realm-export.json
+    ports:
+      - 18080:8080
+
+  # bookinn-seq:
+  #   image: datalust/seq:latest
+  #   container_name: Bookify.Seq
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #   ports:
+  #     - 5341:5341
+  #     - 8081:80
+
+  # bookinn-redis:
+  #   image: redis:latest
+  #   container_name: Bookify.Redis
+  #   restart: always
+  #   ports:
+  #     - '6379:6379'

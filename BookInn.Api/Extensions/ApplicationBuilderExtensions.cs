@@ -1,4 +1,5 @@
-﻿using BookInn.Infrastructure;
+﻿using BookInn.Api.Middleware;
+using BookInn.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookInn.Api.Extensions;
@@ -14,10 +15,10 @@ public static class ApplicationBuilderExtensions
         dbContext.Database.Migrate();
     }
 
-    // public static void UseCustomExceptionHandler(this IApplicationBuilder app)
-    // {
-    //     app.UseMiddleware<ExceptionHandlingMiddleware>();
-    // }
+    public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
+    }
     //
     // public static IApplicationBuilder UseRequestContextLogging(this IApplicationBuilder app)
     // {
